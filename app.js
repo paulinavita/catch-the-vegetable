@@ -49,44 +49,9 @@ app.use('/', require('./routes/index.js'));
 app.use('/users', require('./routes/players.js'));
 app.use('/rooms', require('./routes/rooms.js'));
 
-let player1= null
-let player2 = null
-let score = {};
-
-
-let room = io.of("/rooms/play-room");
-room.on("connection", function(socket) {
-  score[socket.client.id] = [];
-console.log('masukkkkk')
-  // obj.set(socket.client.id, []);
-  // if (io.eio.clientsCount == 1) {
-  //   player1 = "player1";
-  //   obj.set(socket.client.id, null);
-  //   room.emit("player1", `ini user nya  player 1 ${socket.client.id}`);
-  // } else if (io.eio.clientsCount == 2) {
-  //   obj.set(socket.client.id, null);
-  //   player2 = "player2";
-  //   room.emit("player2", `ini user nya  player 2 ${socket.client.id}`);
-  // } else if (io.eio.clientsCount > 2) {
-  //   room.emit("error", "/error");
-  // }
-
-
-  socket.on("click", (data) => {
-    score[socket.client.id].push(data);
-    console.log(score);
-
-  });
-
-  socket.on("disconnect", user => {
-    console.log("dia disconnect ha");
-  });
-});
 
 
 
 
-
-
-const PORT = process.env.PORT || 5050;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
