@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const {ensureAuthenticated} = require('../config/auth')
 const {Player, Room, Item, PlayerItem} = require('../models')
+const room = require('./rooms')
+ 
 
 router.get('/', (req, res) => {
     // res.send('welcome')
@@ -34,11 +36,13 @@ router.get('/inventory', ensureAuthenticated, (req, res) => {
     include : [Player, Item]
   })
   .then(datas  => {
-    res.send(datas)
+    let user = req.user
+    res.render('inventory', {datas, name: req.user.username})
+    // res.send(datas)
   })
   .catch(err => {res.send(err.message)})
-  
 })
+
 
 
 
