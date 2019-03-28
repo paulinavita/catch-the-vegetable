@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../../socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+  </head>
+
+  <body>
+
+    <table border="1" width=50%>
+      <tr>
+        <th>Pilih ya</th>
+        <th>Pilih ya</th>
+        <th>Pilih ya</th>
+      </tr>
+      <tr>
+        <td><button id = "button1" onclick="buttonClicked1()" value="a">Click me</button></td>
+        <td><button id = "button2" onclick="buttonClicked2()" value="b">Click me</button></td>
+        <td><button id = "button3" onclick="buttonClicked3()" value="c">Click me</button></td>
+      </tr>
+      <tr>
+        <td><button id = "button4" onclick="buttonClicked4()" value="d">Click me</button></td>
+        <td><button id = "button5" onclick="buttonClicked5()" value="e">Click me</button></td>
+        <td><button id = "button6" onclick="buttonClicked6()" value="f">Click me</button></td>
+      </tr>
+      <tr>
+        <td><button id = "button7" onclick="buttonClicked7()" value="g">Click me</button></td>
+        <td><button id = "button8" onclick="buttonClicked8()" value="h">Click me</button></td>
+        <td><button id = "button9" onclick="buttonClicked9()" value="i">Click me</button></td>
+      </tr>
+    </table>
+
+
+<div id="dapat"></div>
+
+
+<div id="player1">
+
+
+</div>
+
+<div id="player2"></div>
+
+
+    <script>
+      
+            var socket = io.connect('http://localhost:5050/rooms/play-room');
+
+
+            function buttonClicked1() {
+            socket.emit("click", document.getElementById("button1").value)
+            }
+            function buttonClicked2() {
+            socket.emit("click", document.getElementById("button2").value)
+            }
+            function buttonClicked3() {
+            socket.emit("click", document.getElementById("button3").value)
+            }
+            function buttonClicked4() {
+            socket.emit("click", document.getElementById("button4").value)
+            }
+            function buttonClicked5() {
+            socket.emit("click", document.getElementById("button5").value)
+            }
+            function buttonClicked6() {
+            socket.emit("click", document.getElementById("button6").value)
+            }
+            function buttonClicked7() {
+            socket.emit("click", document.getElementById("button7").value)
+            }
+            function buttonClicked8() {
+            socket.emit("click", document.getElementById("button8").value)
+            }
+            function buttonClicked9() {
+            socket.emit("click", document.getElementById("button9").value)
+            }
+
+            socket.on('dapat', (msg) => {
+                $('#dapat').append($('<li>').html(msg));
+            });
+
+            socket.on('player1', msg => {
+              $('#player1').append($('<li>').html(msg));
+            })
+
+            socket.on('player2', msg => {
+              $('#player2').append($('<li>').html(msg));
+            })
+
+    </script>
+
+  </body>
+
+
+</html>

@@ -39,7 +39,9 @@ router.post("/create" , ensureAuthenticated, (req, res) => {
     .catch(err => res.send(err))
 })
 
-
+router.get("/play-room", ensureAuthenticated, (req, res) => {
+    res.render('play-room')
+})
 
 
 module.exports = router
