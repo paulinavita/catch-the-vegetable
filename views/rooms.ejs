@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Join or Create Room</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <style>
+    @import url("https://fonts.googleapis.com/css?family=Lato:400,100,300,700,100italic,300italic,400italic,700italic,900,900italic");
+    @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
+        a {
+        color: white;
+        }
+        body {
+        padding: 0;
+        margin: 0;
+        }
+        body .btn-bg {
+        width: 100%;
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        }
+
+        body .btn-bg.bg-2 {
+        background: #78c98d;
+        }
+        body .btn-bg.bg-2 .btn-2 button {
+        color: #78c98d;
+        background: #d0f9c7;
+        border: none;
+        -webkit-transition: all 0.7s ease;
+        transition: all 0.7s ease;
+        }
+        body .btn-bg.bg-2 .btn-2 button:hover {
+        background: transparent;
+        color: #d0f9c7;
+        }
+        body .btn-bg.bg-2 .btn-2 button:hover:before,
+        body .btn-bg.bg-2 .btn-2 button:hover:after {
+        -webkit-transition: all 0.7s ease;
+        transition: all 0.7s ease;
+        width: 100%;
+        }
+        body .btn-bg.bg-2 .btn-2 button:before,
+        body .btn-bg.bg-2 .btn-2 button:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0px;
+        width: 0px;
+        height: 3px;
+        background: #d0f9c7;
+        transition: all 0.4s ease;
+        }
+        body .btn-bg.bg-2 .btn-2 button:after {
+        top: inherit;
+        left: inherit;
+        bottom: 0;
+        right: 0;
+        }
+        body .btn-bg.bg-6 {
+        background: #ac7ee5;
+        }
+        body .btn-bg.bg-6 .btn-6 button {
+        width: 11em;
+        height: 3em;
+        color: #d3b7f7;
+        background: transparent;
+        border: 3px solid #d3b7f7;
+        border-radius: 5px;
+        -webkit-transition: border 0.5s ease-out;
+        transition: border 0.5s ease-out;
+        transition-delay: 0.8s;
+        }
+        body .btn-bg.bg-6 .btn-6 button a {
+        position: absolute;
+        z-index: 2;
+        left: 43px;
+        top: 17px;
+        }
+        body .btn-bg.bg-6 .btn-6 button::before,
+        body .btn-bg.bg-6 .btn-6 button::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        content: 'LONG NIGHT';
+        border-radius: 50%;
+        display: block;
+        width: 22em;
+        height: 22em;
+        left: -5.5em;
+        text-align: center;
+        -webkit-transition: box-shadow 0.5s ease-out;
+        transition: box-shadow 0.5s ease-out;
+        transition-delay: 0.75s;
+        -webkit-transition-delay: 0.75s;
+        z-index: 1;
+        }
+        body .btn-bg.bg-6 .btn-6 button::after {
+        transition-delay: 0.25s;
+        -webkit-transition-delay: 0.25s;
+        }
+        body .btn-bg.bg-6 .btn-6 button:hover {
+        color: #fff;
+        border-color: #8460af;
+        animation: witch-word-color 1.5s ease;
+        -webkit-transition: border 0.2s ease;
+        transition: border 0.2s ease;
+        }
+        body .btn-bg.bg-6 .btn-6 button:hover::before {
+        box-shadow: inset 0 0 0 11em #b657e5;
+        transition-delay: 0.05s;
+        }
+        body .btn-bg.bg-6 .btn-6 button:hover::after {
+        box-shadow: inset 0 0 0 11em #8460af;
+        transition-delay: 0.5s;
+        }
+        .btn {
+        margin: 0 auto 30px auto;
+        display: block;
+        }
+        h2 {
+        text-align: center;
+        font-family: 'Raleway';
+        font-weight: 600;
+        color: #fff;
+        }
+        button {
+        cursor: pointer;
+        overflow: hidden;
+        outline: none;
+        color: #fff;
+        position: relative;
+        letter-spacing: 0.1em;
+        font-weight: 400;
+        padding: 1rem 3rem 1rem 3rem;
+        text-transform: uppercase;
+        font-family: "Lato";
+        font-size: 1.5em;
+        }
+        button a {
+        text-decoration: none;
+        }
+        @-moz-keyframes cloud-animation {
+        100% {
+            background-position: 0px 2em;
+        }
+        }
+        @-webkit-keyframes cloud-animation {
+        100% {
+            background-position: 0px 2em;
+        }
+        }
+        @-o-keyframes cloud-animation {
+        100% {
+            background-position: 0px 2em;
+        }
+        }
+        @keyframes cloud-animation {
+        100% {
+            background-position: 0px 2em;
+        }
+        }
+        @-moz-keyframes witch-word-color {
+        0% {
+            color: #d3b7f7;
+        }
+        50% {
+            color: #50514f;
+        }
+        100% {
+            color: #fff;
+        }
+        }
+        @-webkit-keyframes witch-word-color {
+        0% {
+            color: #d3b7f7;
+        }
+        50% {
+            color: #50514f;
+        }
+        100% {
+            color: #fff;
+        }
+        }
+        @-o-keyframes witch-word-color {
+        0% {
+            color: #d3b7f7;
+        }
+        50% {
+            color: #50514f;
+        }
+        100% {
+            color: #fff;
+        }
+        }
+        @keyframes witch-word-color {
+        0% {
+            color: #d3b7f7;
+        }
+        50% {
+            color: #50514f;
+        }
+        100% {
+            color: #fff;
+        }
+        }
+     </style>
+</head>
+<body>
+
+        <div class="btn-bg bg-2">
+          <div class="btn btn-2">
+            <h2>join a room</h2>
+            <button><a href="/rooms/join"> click! </a></button>
+          </div>
+        </div>
+        <div class="btn-bg bg-6">
+          <div class="btn btn-6">
+            <h2>create room</h2>
+            <button><a href = "/rooms/create">create</a></button>
+          </div>
+        </div>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": 2606,
+    "database": "PINDAHAN_catch_the_vegetable_database1",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
