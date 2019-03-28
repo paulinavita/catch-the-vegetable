@@ -91,16 +91,19 @@ background: -webkit-linear-gradient(to right, #96c93d, #00b09b);  /* Chrome 10-2
 background: linear-gradient(to right, #96c93d, #00b09b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 </style>
-<body>
+
 <div class="body" ng-app="myApp">
     <div class="wrapper" ng-controller="MyCtrl">
+      <form method="POST">
         <div class="info"> GAME PIN </div>
 
         <input class="input-phone" type='text' placeholder="GAME PIN" name="PIN" phone-input ng-model="phoneVal"/>
-          <a href="/rooms/play-room" class="btn yellow">LET'S PLAY</a>
+          <!-- <a href="" class="btn yellow"></a> -->
+          <button type="sumbit"> LET'S PLAY</button>
+          </form>
     </div>
 
 </div>
- 
+
 </body>
 </html>

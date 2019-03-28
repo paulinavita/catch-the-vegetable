@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <script src="../../socket.io/socket.io.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 
     <style>
@@ -62,9 +63,11 @@ tr:nth-child(even) {
 <div id="player2"></div>
 
 
+
+
     <script>
-      
-            var socket = io.connect('http://localhost:5050/rooms/play-room');
+
+              var socket = io.connect('http://localhost:3030/rooms/player-room');
 
 
             function buttonClicked1() {
@@ -94,18 +97,6 @@ tr:nth-child(even) {
             function buttonClicked9() {
             socket.emit("click", document.getElementById("button9").value)
             }
-
-            socket.on('dapat', (msg) => {
-                $('#dapat').append($('<li>').html(msg));
-            });
-
-            socket.on('player1', msg => {
-              $('#player1').append($('<li>').html(msg));
-            })
-
-            socket.on('player2', msg => {
-              $('#player2').append($('<li>').html(msg));
-            })
 
     </script>
 

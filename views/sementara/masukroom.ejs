@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../../socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+  </head>
+
+  <body>
+    <!-- <div id="room">
+
+    </div>
+    <form action="/" method="POST" id="chatForm">
+      <input id="txt" autocomplete="off" autofocus="on"  placeholder="type your message here..." /><button>Send</button>
+      <div id="oh">
+
+      </div>
+    </form> -->
+
+    <table>
+      <tr>
+        <th>Pilih ya</th>
+        <th>Pilih ya</th>
+        <th>Pilih ya</th>
+      </tr>
+      <tr>
+        <td><a href="">a</a></td>
+        <td><a href="">b</a></td>
+        <td><a href="">c</a></td>
+      </tr>
+      <tr>
+        <td><a href="">d</a></td>
+        <td><a href="">f</a></td>
+        <td><a href="">g</a></td>
+      </tr>
+      <tr>
+        <td><a href="">h</a></td>
+        <td><a href="">i</a>l</td>
+        <td><a href="">j</a></td>
+      </tr>
+      <tr>
+        <td><a href="">k</a></td>
+        <td><a href="">l</a></td>
+        <td><a href="">m</a></td>
+      </tr>
+      <tr>
+        <td><a href="">n</a></td>
+        <td><a href="">o</a></td>
+        <td><a href="">p</a></td>
+      </tr>
+    </table>
+
+
+<div id="dapat"></div>
+
+
+<div id="player1">
+
+
+</div>
+
+<div id="player2"></div>
+
+
+
+
+
+<div>
+  <button type="button" onclick="clicked()"name="button"> click</button>
+</div>
+
+
+
+    <script>
+            var socket = io.connect('http://localhost:3030/rooms/player-room');
+
+              // $('form').submit(function(e){
+              //     e.preventDefault(); // prevents page reloading
+              //     socket.emit('input', $('#txt').val());
+              //     $('#txt').val('');
+              //     return false;
+              // });
+
+
+            socket.on('dapat', (msg) => {
+                $('#dapat').append($('<li>').html(msg));
+            });
+
+            socket.on('player1', msg => {
+              $('#player1').append($('<li>').html(msg));
+            })
+
+            socket.on('player2', msg => {
+              $('#player2').append($('<li>').html(msg));
+            })
+
+            socket.on('error', (route) => {
+              window.location.href = route
+            })
+
+            function clicked(){
+              socket.emit('click', 'ini message')
+            }
+
+
+            // socket.on('left', function(username) {
+            //     $('#room').append($('<li>').html(username));
+            // });
+            //
+            // socket.on('input', function(username) {
+            //     $('#oh').append($('<li>').html(username));
+            // });
+    </script>
+
+  </body>
+
+
+</html>
