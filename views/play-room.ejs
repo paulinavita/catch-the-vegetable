@@ -8,95 +8,269 @@
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 
     <style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+    table {
+          border-spacing: 1;
+          border-collapse: collapse;
+          border-radius: 6px;
+          overflow: hidden;
+          max-width: 800px;
+          width: 10%;
+          margin: 0 auto;
+          position: relative;
+          }
+          table * {
+          position: relative;
+          }
+          table td, table th {
+          padding-left: 8px;
+          }
+          table thead tr {
+          height: 60px;
+          font-size: 16px;
+          }
+          table tbody tr {
+          height: 48px;
+          }
+          table tbody tr:last-child {
+          border: 0;
+          }
+          table td, table th {
+          text-align: left;
+          }
+          table td.l, table th.l {
+          text-align: right;
+          }
+          table td.c, table th.c {
+          text-align: center;
+          }
+          table td.r, table th.r {
+          text-align: center;
+          }
+          @media screen and (max-width: 35.5em) {
+          table {
+              display: block;
+          }
+          table > *, table tr, table td, table th {
+              display: block;
+          }
+          table thead {
+              display: none;
+          }
+          table tbody tr {
+              height: auto;
+              padding: 8px 0;
+          }
+          table tbody tr td {
+              padding-left: 45%;
+              margin-bottom: 12px;
+          }
+          table tbody tr td:last-child {
+              margin-bottom: 0;
+          }
+          table tbody tr td:before {
+              position: absolute;
+              font-weight: 700;
+              width: 40%;
+              top: 0;
+          }
+          table tbody tr td:nth-child(1):before {
+              content: "Code";
+          }
+          table tbody tr td:nth-child(2):before {
+              content: "Stock";
+          }
+          table tbody tr td:nth-child(3):before {
+              content: "Cap";
+          }
+          table tbody tr td:nth-child(4):before {
+              content: "Inch";
+          }
+          table tbody tr td:nth-child(5):before {
+              content: "Box Type";
+          }
+          }
+          body {
+          background: #9BC86A;
+          font: 400 14px 'Calibri','Arial';
+          padding: 20px;
+          }
+          blockquote {
+          color: white;
+          text-align: center;
+          }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
 </style>
   </head>
 
   <body>
 
-    <table border="1" width=50%>
-      <tr>
-        <th>Pilih ya</th>
-        <th>Pilih ya</th>
-        <th>Pilih ya</th>
-      </tr>
-      <tr>
-        <td><button id = "button1" onclick="buttonClicked1()" value="a">Click me</button></td>
-        <td><button id = "button2" onclick="buttonClicked2()" value="b">Click me</button></td>
-        <td><button id = "button3" onclick="buttonClicked3()" value="c">Click me</button></td>
-      </tr>
-      <tr>
-        <td><button id = "button4" onclick="buttonClicked4()" value="d">Click me</button></td>
-        <td><button id = "button5" onclick="buttonClicked5()" value="e">Click me</button></td>
-        <td><button id = "button6" onclick="buttonClicked6()" value="f">Click me</button></td>
-      </tr>
-      <tr>
-        <td><button id = "button7" onclick="buttonClicked7()" value="g">Click me</button></td>
-        <td><button id = "button8" onclick="buttonClicked8()" value="h">Click me</button></td>
-        <td><button id = "button9" onclick="buttonClicked9()" value="i">Click me</button></td>
-      </tr>
-    </table>
+    <center><h3>Pilih Veggies!!</h3></center>
+      <table width=50%>
+
+        <tr>
+          <td>
+              <button id = "button1" onclick="buttonClicked1()" value="avocado"><img src="/assets/avocado.png" width="60" height="60"><br>Click me</button>
+          </td>
+          <td>
+              <button id = "button2" onclick="buttonClicked2()" value="cherry"><img src="/assets/cherry.png" width="60" height="60"><br>Click me</button>
+          </td>
+          <td>
+              <button id = "button3" onclick="buttonClicked3()" value="banana"><img src="/assets/banana.png" width="60" height="60"><br>Click me</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+              <button id = "button4" onclick="buttonClicked4()" value="pineapple"><img src="/assets/pinapple.png" width="60" height="60"><br>Click me</button>
+          </td>
+          <td>
+              <button id = "button5" onclick="buttonClicked5()" value="mushroom"><img src="/assets/mush.png" width="60" height="60"><br>Click me</button>
+          </td>
+          <td>
+              <button id = "button6" onclick="buttonClicked6()" value="strawberry"><img src="/assets/straw.png" width="60" height="60"><br>Click me</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+              <button id = "button7" onclick="buttonClicked7()" value="pear"><img src="/assets/pear.png" width="60" height="60"><br>Click me</button>
+          </td>
+          <td>
+              <button id = "button8" onclick="buttonClicked8()" value="lemon"><img src="/assets/lemon.png" width="60" height="60"><br>Click me</button>
+          </td>
+          <td>
+              <button id = "button9" onclick="buttonClicked9()" value="green"><img src="/assets/green.png" width="60" height="60"><br>Click me</button>
+          </td>
+          </td>
+        </tr>
+      </table>
+
+
+
+<button type="button" onclick="show()" name="button"></button>
+    <div id="mydiv">
+
+      </div>
+
+
 
 
 <div id="dapat"></div>
 
 
-<div id="player1">
+<div id="game">
 
 
 </div>
 
-<div id="player2"></div>
+<div id="chatting"></div>
 
+
+<span id="counter">10</span>
+<span id="winner"></span>
 
 
 
     <script>
 
-              var socket = io.connect('http://localhost:3030/rooms/player-room');
+    var socket = io.connect("http://localhost:3000/rooms/player-room");
 
 
-            function buttonClicked1() {
-            socket.emit("click", document.getElementById("button1").value)
-            }
-            function buttonClicked2() {
-            socket.emit("click", document.getElementById("button2").value)
-            }
-            function buttonClicked3() {
-            socket.emit("click", document.getElementById("button3").value)
-            }
-            function buttonClicked4() {
-            socket.emit("click", document.getElementById("button4").value)
-            }
-            function buttonClicked5() {
-            socket.emit("click", document.getElementById("button5").value)
-            }
-            function buttonClicked6() {
-            socket.emit("click", document.getElementById("button6").value)
-            }
-            function buttonClicked7() {
-            socket.emit("click", document.getElementById("button7").value)
-            }
-            function buttonClicked8() {
-            socket.emit("click", document.getElementById("button8").value)
-            }
-            function buttonClicked9() {
-            socket.emit("click", document.getElementById("button9").value)
-            }
+
+    socket.on('sizeplayer', arr => {
+      if(arr[0].length == 1){
+
+        document.getElementById("button1").disabled = true;
+        document.getElementById("button2").disabled = true;
+        document.getElementById("button3").disabled = true;
+        document.getElementById("button4").disabled = true;
+        document.getElementById("button5").disabled = true;
+        document.getElementById("button6").disabled = true;
+        document.getElementById("button7").disabled = true;
+        document.getElementById("button8").disabled = true;
+        document.getElementById("button9").disabled = true;
+      } else {
+        document.getElementById("button1").disabled = false;
+        document.getElementById("button2").disabled = false;
+        document.getElementById("button3").disabled = false;
+        document.getElementById("button4").disabled = false;
+        document.getElementById("button5").disabled = false;
+        document.getElementById("button6").disabled = false;
+        document.getElementById("button7").disabled = false;
+        document.getElementById("button8").disabled = false;
+        document.getElementById("button9").disabled = false;
+
+      //   socket.on('counter', function(count){
+      //       // $('#game').append($('<li>').text(count));
+      //         $("#mydiv").append($("<li>").html(count));
+      //           $(document).ready(function() {
+      //             setTimeout(function() {
+      //               $("#mydiv").fadeOut("slow", function() {
+      //                 $("#mydiv").remove();
+      //               });
+      //             }, 2000);
+      //           });
+      //     });
+      //
+      }
+    })
+
+    function buttonClicked1() {
+      socket.emit("click", document.getElementById("button1").value);
+    }
+
+    function buttonClicked2() {
+      socket.emit("click", document.getElementById("button2").value);
+    }
+
+    function buttonClicked3() {
+      socket.emit("click", document.getElementById("button3").value);
+    }
+
+    function buttonClicked4() {
+      socket.emit("click", document.getElementById("button4").value);
+    }
+
+    function buttonClicked5() {
+      socket.emit("click", document.getElementById("button5").value);
+    }
+
+    function buttonClicked6() {
+      socket.emit("click", document.getElementById("button6").value);
+    }
+
+    function buttonClicked7() {
+      socket.emit("click", document.getElementById("button7").value);
+    }
+
+    function buttonClicked8() {
+      socket.emit("click", document.getElementById("button8").value);
+    }
+
+    function buttonClicked9() {
+      socket.emit("click", document.getElementById("button9").value);
+    }
+
+    // socket.on('counter', function(count){
+    //     $('#mydiv').append($('<li>').text(count));
+    //   });
+
+
+    socket.on('notification', function(msg) {
+        $('#mydiv').append($('<li>').html(msg));
+    })
+
+    socket.on("timer", function(data) {
+        // $('#counter').append($('<li>').html(data));
+
+        document.getElementById("counter").innerHTML = data;
+      });
+
+      socket.on("winner", function(data) {
+        $('#winner').append($('<li>').html(data));
+          document.getElementById("button9").disabled = true;
+
+
+        // document.getElementById("counter").innerHTML = data;
+      });
 
     </script>
 

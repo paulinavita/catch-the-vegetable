@@ -89,40 +89,121 @@ app.use("/rooms", require("./routes/rooms.js"));
 // });
 
 // let player = new Map();
-let paulina = [];
-let muhammad = [];
 
-let obj = new Map();
+
+// let obj = new Map();
 
 let objAja = {};
 let player1 = null;
 let player2 = null;
 
+
 let score = {};
+let counts = {}
+let theirFruit = []
+const lastScore = {
+  player1: 0,
+  player2: 0
+}
+
+let hasil = null
+let fruits = [
+  "avocado",
+  "cherry",
+  "banana",
+  "pineapple",
+  "mushroom",
+  "strawberry",
+  "pear",
+  "lemon",
+  "green"
+];
+
+const random = () => fruits[Math.floor(Math.random() * 9)];
+const buah = [random(), random(), random(), random(), random()];
+const buahJoin = buah.join(", ");
+
+
 
 let room = io.of("/rooms/player-room");
 room.on("connection", function(socket) {
   score[socket.client.id] = [];
+  counts[socket.client.id] = []
+
+  if(io.eio.clientsCount == 1) {
+    counts[socket.client.id].push("Player 1")
+  } else if  (io.eio.clientsCount == 2){
+    counts[socket.client.id].push("Player 2")
+
+
+  let counter = 10
+  let pemenang = setInterval(function () {
+    room.emit("timer", counter);
+    counter--
+    if (counter == 0) {
+      room.emit("timer", "Waktu Habis!!")
+      if (Object.values(lastScore)[0] > (Object.values(lastScore)[1])) {
+        room.emit("winnner", "Player 1 Wins!")
+      } else {
+        room.emit("winnner", "Player 2 Wins!")
+      }
+      clearInterval(pemenang)
+    }
+
+  }, 1000)
+  }
+  let objLength = Object.keys(score);
+  theirFruit.push(buah)
+  room.emit("sizeplayer", [objLength, buahJoin])
+
+
+  // let countdown = 10;
+  //   let timer = setInterval(function() {
+  //   countdown--;
+  //   if (countdown == 0) {
+  //     clearInterval(timer)
+  //   }
+  //   io.emit("timer", { countdown: countdown });
+  // }, 1000);
+
 
   // obj.set(socket.client.id, []);
-  if (io.eio.clientsCount == 1) {
-    player1 = "player1";
-    obj.set(socket.client.id, null);
-    room.emit("player1", `ini user nya  player 1 ${socket.client.id}`);
-  } else if (io.eio.clientsCount == 2) {
-    obj.set(socket.client.id, null);
-    player2 = "player2";
-    room.emit("player2", `ini user nya  player 2 ${socket.client.id}`);
-  } else if (io.eio.clientsCount > 2) {
-    room.emit("error", "/error");
-  }
+  // if (io.eio.clientsCount == 1) {
+  //   player1 = "player1";
+  //   obj.set(socket.client.id, null);
+  //   room.emit("player1", `ini user nya  player 1 ${socket.client.id}`);
+  // } else if (io.eio.clientsCount == 2) {
+  //   obj.set(socket.client.id, null);
+  //   player2 = "player2";
+  //   room.emit("player2", `ini user nya  player 2 ${socket.client.id}`);
+  // } else if (io.eio.clientsCount > 2) {
+  //   room.emit("error", "/error");
+  // }
 
   socket.on("click", msg => {
     score[socket.client.id].push(msg);
-    console.log(score);
+    console.log(buah, 'ini perbandingannya')
+    console.log(score, 'ini scoreeee');
+    console.log(counts, 'ini countsssss');
+
+    const [player1, player2] = Object.values(score) 
+  
+    buah.forEach((el) => {
+      if (player1.includes(el)) {
+        lastScore["player1"] += 1
+      }
+      if (player2.includes(el)) {
+        lastScore["player2"] += 1
+      }
+    })
+    // console.log(lastScore)
+    
+    room.emit("notification", `${counts[socket.client.id]} got this => ${msg}`)
   });
 
+
   socket.on("disconnect", user => {
+
     console.log("dia disconnect ha");
   });
 });

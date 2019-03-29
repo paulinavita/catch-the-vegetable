@@ -45,28 +45,18 @@ router.get("/player-room", function(req, res) {
 });
 
 
-// app.post("/", (req, res) => {
-//   users = req.body.room;
-//   count++;
-//   if (count > 2) {
-//     res.send("anda terlbam");
-//   } else {
-//     res.redirect("/rooms/player-room");
-//   }
-// });
+router.get("/create", ensureAuthenticated, (req, res) => {
+  res.render("rooms-create");
+});
 
-// router.get("/create", ensureAuthenticated, (req, res) => {
-//   res.render("rooms-create");
-// });
-
-// router.post("/create", ensureAuthenticated, (req, res) => {
-//   console.log(req, "iniiii");
-//   Room.create(req.body)
-//     .then(result => {
-//       res.redirect("/rooms/play-room");
-//     })
-//     .catch(err => res.send(err));
-// });
+router.post("/create", ensureAuthenticated, (req, res) => {
+  console.log(req, "iniiii");
+  Room.create(req.body)
+    .then(result => {
+      res.redirect("/rooms/player-room");
+    })
+    .catch(err => res.send(err));
+});
 
 // router.get("/play-room", ensureAuthenticated, (req, res) => {
 //   res.render("play-room");
