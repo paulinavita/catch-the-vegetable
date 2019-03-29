@@ -35,6 +35,7 @@ router.get('/show-report', ensureAuthenticated, (req, res) => {
   Room.findAll({include : [Player]})
   .then(rooms => {
     res.render('show-report', {rooms, name : req.user.username})
+    // res.send(rooms)
   })
   .catch(err =>{
     res.send(err)

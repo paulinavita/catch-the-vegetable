@@ -8,6 +8,7 @@ const [players, rooms] = [
   require("./routes/players.js"),
   require("./routes/rooms.js")
 ];
+const convertDate = require('./helpers')
 
 const session = require("express-session");
 
@@ -35,6 +36,14 @@ app.use(passport.session());
 // flash
 app.use(flash());
 
+//helper
+app.use((req, res, next) => {
+  res.locals.error = null
+  res.locals.convertDate = convertDate
+  next()
+})
+
+
 //global var colors
 app.use(function(req, res, next) {
   res.locals.success_msg = req.flash("success_msg");
@@ -43,7 +52,8 @@ app.use(function(req, res, next) {
   next();
 });
 
-// //routes
+
+ //routes
 
 let users = "";
 let count = 0;
